@@ -132,6 +132,7 @@
         alert(
           `${heroesArray[0].name}, har gjort ${heroesArray[0].damage} skade på ${dragonObject.name} `
         );
+        getRandomDragonAttack();
       }
 
       //archer
@@ -148,6 +149,7 @@
         alert(
           `${heroesArray[1].name}, har gjort ${heroesArray[1].damage} skade på ${dragonObject.name} `
         );
+        getRandomDragonAttack();
       }
 
       //warrior
@@ -164,7 +166,26 @@
         alert(
           `${heroesArray[1].name}, har gjort ${heroesArray[1].damage} skade på ${dragonObject.name} `
         );
+        getRandomDragonAttack();
       }
+
+      //har laget getRandomAttack(); under hver hero, da dragen skal angripe med en gang
+
+      //angrep dragen skal gjøre, math.random og true, false
+      function getRandomDragonAttack() {
+        let aliveHeroes = heroesArray.filter((hero) => hero.alive);
+
+        if (aliveHeroes.length > 0 && dragonObject.currentHP > 0) {
+          let randomHero = Math.floor(Math.random() * aliveHeroes.length);
+          createHeroCard(aliveHeroes[randomHero]);
+        } else if (aliveHeroes.length === 0 && dragonObject.currentHP > 0) {
+          alert("spillet er over");
+        } else if (aliveHeroes.length > 0 && dragonObject.currentHP === 0) {
+          alert("Heltene har vunnet");
+        }
+      }
+
+     
     </script>
   </body>
 </html>
