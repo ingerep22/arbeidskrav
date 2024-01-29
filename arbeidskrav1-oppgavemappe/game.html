@@ -129,7 +129,41 @@
         dragonObject.currentHP -= healerDamage;
 
         dragonHealthTxt.innerHTML = `${dragonObject.maxHP} / ${dragonObject.currentHP} HP`;
-        alert(`${heroesArray[0].name}, har gjort ${heroesArray[0].damage} skade på ${dragonObject.name} `);
+        alert(
+          `${heroesArray[0].name}, har gjort ${heroesArray[0].damage} skade på ${dragonObject.name} `
+        );
+      }
+
+      //archer
+      const archer = document.querySelector(".archer");
+
+      archer.addEventListener("click", archerImage);
+
+      function archerImage() {
+        const archerDamage = heroesArray[1].damage;
+
+        dragonObject.currentHP -= archerDamage;
+
+        dragonHealthTxt.innerHTML = `${dragonObject.maxHP} / ${dragonObject.currentHP} HP`;
+        alert(
+          `${heroesArray[1].name}, har gjort ${heroesArray[1].damage} skade på ${dragonObject.name} `
+        );
+      }
+
+      //warrior
+      const warrior = document.querySelector(".warrior");
+
+      warrior.addEventListener("click", warriorImage);
+
+      function warriorImage() {
+        const warriorDamage = heroesArray[1].damage;
+
+        dragonObject.currentHP -= warriorDamage;
+
+        dragonHealthTxt.innerHTML = `${dragonObject.maxHP} / ${dragonObject.currentHP} HP`;
+        alert(
+          `${heroesArray[1].name}, har gjort ${heroesArray[1].damage} skade på ${dragonObject.name} `
+        );
       }
     </script>
   </body>
