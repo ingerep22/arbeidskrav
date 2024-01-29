@@ -112,6 +112,25 @@
       let archerHealthTxt = document.getElementById("archer-health-txt");
       let warriorHealthTxt = document.getElementById("warrior-health-txt");
       let dragonHealthTxt = document.querySelector(".dragon-health-txt");
+
+      //Heroes angrep på dragon, lager function til hver helt
+
+      //healer
+      //starter med å hente bilde
+      const healer = document.querySelector(".healer");
+
+      //legger til en eventlistener og lager et parameter for å sende videre til function healerimage
+      healer.addEventListener("click", healerImage);
+
+      function healerImage() {
+        const healerDamage = heroesArray[0].damage;
+
+        //currentHP blir manipulert med skaden healer har
+        dragonObject.currentHP -= healerDamage;
+
+        dragonHealthTxt.innerHTML = `${dragonObject.maxHP} / ${dragonObject.currentHP} HP`;
+        alert(`${heroesArray[0].name}, har gjort ${heroesArray[0].damage} skade på ${dragonObject.name} `);
+      }
     </script>
   </body>
 </html>
