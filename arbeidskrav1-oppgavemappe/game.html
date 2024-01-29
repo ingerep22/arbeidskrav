@@ -185,7 +185,22 @@
         }
       }
 
-     
+      function createHeroCard(hero) {
+        console.log(hero);
+        const dragonDamage = dragonObject.damage;
+        hero.currentHP -= dragonDamage;
+        console.log(hero.currentHP);
+        alert(`${dragonObject.name} har angrepet ${hero.name}`);
+
+        if (hero.name == "Henriette Healer" && hero.currentHP > 0 && hero.alive) {
+          healerHealthTxt.innerHTML = `${hero.maxHP} / ${hero.currentHP} HP`;
+        } else if (hero.name == "Henriette Healer" && hero.currentHP <= 0 && hero.alive) {
+          healerHealthTxt.innerHTML = `${hero.maxHP} / ${hero.currentHP} HP`;
+          alert("er død");
+          hero.alive = false;
+          console.log(`${hero.alive}`);
+        }
+      } 
     </script>
   </body>
 </html>
