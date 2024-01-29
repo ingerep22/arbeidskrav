@@ -202,18 +202,20 @@
         }
 
         if (hero.name == "Ariana Archer" && hero.currentHP > 0 && hero.alive) {
-          healerHealthTxt.innerHTML = `${hero.maxHP} / ${hero.currentHP} HP`;
+          archerHealthTxt.innerHTML = `${hero.maxHP} / ${hero.currentHP} HP`;
         } else if (hero.name == "Ariana Archer" && hero.currentHP <= 0 && hero.alive) {
-          healerHealthTxt.innerHTML = `${hero.maxHP} / ${hero.currentHP} HP`;
+          archerHealthTxt.innerHTML = `${hero.maxHP} / ${hero.currentHP} HP`;
           alert("er død");
           hero.alive = false;
           console.log(`${hero.alive}`);
         }
 
         if (hero.name == "Wyona Warrior" && hero.currentHP > 0 && hero.alive) {
-          healerHealthTxt.innerHTML = `${hero.maxHP} / ${hero.currentHP} HP`;
+          warriorHealthTxt.innerHTML = `${hero.maxHP} / ${hero.currentHP} HP`;
         } else if (hero.name == "Wyona Warrior" && hero.currentHP <= 0 && hero.alive) {
-          healerHealthTxt.innerHTML = `${hero.maxHP} / ${hero.currentHP} HP`;
+
+          // warrior.innerHTML = `${hero.maxHP} / ${hero.currentHP} HP`; forvinner fra nettsiden
+          warriorHealthTxt.innerHTML = `${hero.maxHP} / ${hero.currentHP} HP`;
           alert("er død");
           hero.alive = false;
           console.log(`${hero.alive}`);
