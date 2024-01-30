@@ -74,7 +74,7 @@
       //Stats for heroes
       let heroesArray = [
         {
-          id: 0,
+          id: 1,
           name: "Henriette Healer",
           maxHP: 400,
           currentHP: 400,
@@ -82,7 +82,7 @@
           alive: true,
         },
         {
-          id: 1,
+          id: 2,
           name: "Ariana Archer",
           maxHP: 600,
           currentHP: 600,
@@ -90,7 +90,7 @@
           alive: true,
         },
         {
-          id: 2,
+          id: 3,
           name: "Wyona Warrior",
           maxHP: 800,
           currentHP: 800,
@@ -167,6 +167,7 @@
           `${heroesArray[2].name}, har gjort ${heroesArray[2].damage} skade på ${dragonObject.name} `
         );
         getRandomDragonAttack();
+        
       }
 
       //har laget getRandomAttack(); under hver hero, da dragen skal angripe med en gang
@@ -175,20 +176,15 @@
       function getRandomDragonAttack() {
         let aliveHeroes = heroesArray.filter((hero) => hero.alive);
 
+        if (aliveHeroes.length === 0) {
+    alert("All heroes are dead. The dragon has won!");
+  }
+
         if (aliveHeroes.length > 0 && dragonObject.currentHP > 0) {
           let randomHero = Math.floor(Math.random() * aliveHeroes.length);
           createHeroCard(aliveHeroes[randomHero]);
 
-        } else if (dragonObject.currentHP === 0) {
-            alert("Heltene har vunnet");
-            console.log("vunnet");
-          }
-          else {
-  // This block will execute if no hero has alive set to true
-  alert("All heroes are defeated!");
-  console.log("Game over - Dragon wins!");
-}
-        
+        }     
       }
 
       function createHeroCard(hero) {
@@ -210,10 +206,11 @@
           hero.alive
         ) {
           healerHealthTxt.innerHTML = `${hero.maxHP} / ${hero.currentHP} HP`;
-          alert("er død");
           healer.remove();
           hero.alive = false;
           console.log(`${hero.alive}`);
+          alert("er død");
+    
         }
 
         if (hero.name == "Ariana Archer" && hero.currentHP > 0 && hero.alive) {
@@ -224,10 +221,11 @@
           hero.alive
         ) {
           archerHealthTxt.innerHTML = `${hero.maxHP} / ${hero.currentHP} HP`;
-          alert("er død");
           archer.remove();
           hero.alive = false;
           console.log(`${hero.alive}`);
+          alert("er død");
+  
         }
 
         if (hero.name == "Wyona Warrior" && hero.currentHP > 0 && hero.alive) {
@@ -239,12 +237,17 @@
         ) {
           // warrior.innerHTML = `${hero.maxHP} / ${hero.currentHP} HP`; forvinner fra nettsiden
           warriorHealthTxt.innerHTML = `${hero.maxHP} / ${hero.currentHP} HP`;
-          alert("er død");
           warrior.remove();
           hero.alive = false;
           console.log(`${hero.alive}`);
+          alert("er død");
+          
         }
+        
       }
+
+   
+
     </script>
   </body>
 </html>
