@@ -164,7 +164,7 @@
 
         dragonHealthTxt.innerHTML = `${dragonObject.maxHP} / ${dragonObject.currentHP} HP`;
         alert(
-          `${heroesArray[1].name}, har gjort ${heroesArray[1].damage} skade på ${dragonObject.name} `
+          `${heroesArray[2].name}, har gjort ${heroesArray[2].damage} skade på ${dragonObject.name} `
         );
         getRandomDragonAttack();
       }
@@ -178,14 +178,19 @@
         if (aliveHeroes.length > 0 && dragonObject.currentHP > 0) {
           let randomHero = Math.floor(Math.random() * aliveHeroes.length);
           createHeroCard(aliveHeroes[randomHero]);
-        } else if (aliveHeroes.length === 0 && dragonObject.currentHP > 0) {
-          alert("spillet er over");
+        } 
+        //sjekker om tapt
+        if (aliveHeroes.length === 0 && dragonObject.currentHP > 0) {
+          alert(`Spillet er tapt! ${dragonObject.name} har vunnet!`);
           console.log("over");
+        //sjekker vant
         } else if (aliveHeroes.length > 0 && dragonObject.currentHP <= 0) {
           alert("Heltene har vunnet");
           console.log("vunnet");
         }
+      
       }
+    
 
       function createHeroCard(hero) {
         console.log(hero);
