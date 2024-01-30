@@ -178,19 +178,18 @@
         if (aliveHeroes.length > 0 && dragonObject.currentHP > 0) {
           let randomHero = Math.floor(Math.random() * aliveHeroes.length);
           createHeroCard(aliveHeroes[randomHero]);
-        } 
-        //sjekker om tapt
-        if (aliveHeroes.length === 0 && dragonObject.currentHP > 0) {
-          alert(`Spillet er tapt! ${dragonObject.name} har vunnet!`);
-          console.log("over");
-        //sjekker vant
-        } else if (aliveHeroes.length > 0 && dragonObject.currentHP <= 0) {
-          alert("Heltene har vunnet");
-          console.log("vunnet");
-        }
-      
+
+        } else if (dragonObject.currentHP === 0) {
+            alert("Heltene har vunnet");
+            console.log("vunnet");
+          }
+          else {
+  // This block will execute if no hero has alive set to true
+  alert("All heroes are defeated!");
+  console.log("Game over - Dragon wins!");
+}
+        
       }
-    
 
       function createHeroCard(hero) {
         console.log(hero);
@@ -199,38 +198,53 @@
         console.log(hero.currentHP);
         alert(`${dragonObject.name} har angrepet ${hero.name}`);
 
-        if (hero.name == "Henriette Healer" && hero.currentHP > 0 && hero.alive) {
+        if (
+          hero.name == "Henriette Healer" &&
+          hero.currentHP > 0 &&
+          hero.alive
+        ) {
           healerHealthTxt.innerHTML = `${hero.maxHP} / ${hero.currentHP} HP`;
-        } else if (hero.name == "Henriette Healer" && hero.currentHP <= 0 && hero.alive) {
+        } else if (
+          hero.name == "Henriette Healer" &&
+          hero.currentHP <= 0 &&
+          hero.alive
+        ) {
           healerHealthTxt.innerHTML = `${hero.maxHP} / ${hero.currentHP} HP`;
           alert("er død");
+          healer.remove();
           hero.alive = false;
           console.log(`${hero.alive}`);
-          healer.remove();
         }
 
         if (hero.name == "Ariana Archer" && hero.currentHP > 0 && hero.alive) {
           archerHealthTxt.innerHTML = `${hero.maxHP} / ${hero.currentHP} HP`;
-        } else if (hero.name == "Ariana Archer" && hero.currentHP <= 0 && hero.alive) {
+        } else if (
+          hero.name == "Ariana Archer" &&
+          hero.currentHP <= 0 &&
+          hero.alive
+        ) {
           archerHealthTxt.innerHTML = `${hero.maxHP} / ${hero.currentHP} HP`;
           alert("er død");
+          archer.remove();
           hero.alive = false;
           console.log(`${hero.alive}`);
-          archer.remove();
         }
 
         if (hero.name == "Wyona Warrior" && hero.currentHP > 0 && hero.alive) {
           warriorHealthTxt.innerHTML = `${hero.maxHP} / ${hero.currentHP} HP`;
-        } else if (hero.name == "Wyona Warrior" && hero.currentHP <= 0 && hero.alive) {
-
+        } else if (
+          hero.name == "Wyona Warrior" &&
+          hero.currentHP <= 0 &&
+          hero.alive
+        ) {
           // warrior.innerHTML = `${hero.maxHP} / ${hero.currentHP} HP`; forvinner fra nettsiden
           warriorHealthTxt.innerHTML = `${hero.maxHP} / ${hero.currentHP} HP`;
           alert("er død");
+          warrior.remove();
           hero.alive = false;
           console.log(`${hero.alive}`);
-          warrior.remove();
         }
-      } 
+      }
     </script>
   </body>
 </html>
