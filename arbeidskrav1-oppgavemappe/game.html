@@ -229,9 +229,10 @@
         console.log(`Number of alive heroes: ${aliveHeroes.length}`);
 
         if (aliveHeroes.length === 0 && dragonObject.currentHP > 0) {
-          alert("Spillet er tapt! har vunnet!");
+          alert(`Spillet er tapt! ${dragonObject.name} har vunnet!`);
           console.log("Alle heltene er døde. Dragen har vunnet!");
         }
+        console.log(aliveHeroes.length);
       }
 
       //har laget getRandomAttack(); under hver hero, da dragen skal angripe med en gang
@@ -244,7 +245,6 @@
           let randomHero = Math.floor(Math.random() * aliveHeroes.length);
           createHeroCard(aliveHeroes[randomHero]);
         } 
-        console.log(aliveHeroes.length);
       }
     </script>
   </body>
