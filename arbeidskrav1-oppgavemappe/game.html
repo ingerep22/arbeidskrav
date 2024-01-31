@@ -128,7 +128,6 @@
         //currentHP blir manipulert med skaden healer har
         dragonObject.currentHP -= healerDamage;
 
-        
         alert(
           `${heroesArray[0].name}, har gjort ${heroesArray[0].damage} skade på ${dragonObject.name} `
         );
@@ -146,7 +145,6 @@
 
         dragonObject.currentHP -= archerDamage;
 
-       
         alert(
           `${heroesArray[1].name}, har gjort ${heroesArray[1].damage} skade på ${dragonObject.name} `
         );
@@ -164,17 +162,12 @@
 
         dragonObject.currentHP -= warriorDamage;
 
-       
         alert(
           `${heroesArray[2].name}, har gjort ${heroesArray[2].damage} skade på ${dragonObject.name} `
         );
         dragonHealthTxt.innerHTML = `${dragonObject.maxHP} / ${dragonObject.currentHP} HP`;
         getRandomDragonAttack();
-        
       }
-
-     
-
 
       function createHeroCard(hero) {
         console.log(hero);
@@ -198,8 +191,7 @@
           healer.remove();
           hero.alive = false;
           console.log(`${hero.alive}`);
-          
-    
+          updateAliveHeroes();
         }
 
         if (hero.name == "Ariana Archer" && hero.currentHP > 0 && hero.alive) {
@@ -213,42 +205,47 @@
           archer.remove();
           hero.alive = false;
           console.log(`${hero.alive}`);
-          
-  
+          updateAliveHeroes();
         }
 
         if (hero.name == "Wyona Warrior" && hero.currentHP > 0 && hero.alive) {
           warriorHealthTxt.innerHTML = `${hero.maxHP} / ${hero.currentHP} HP`;
         } else if (
-          hero.name == "Wyona Warrior" && hero.currentHP <= 0 && hero.alive
+          hero.name == "Wyona Warrior" &&
+          hero.currentHP <= 0 &&
+          hero.alive
         ) {
           // warrior.innerHTML = `${hero.maxHP} / ${hero.currentHP} HP`; forvinner fra nettsiden
           warriorHealthTxt.innerHTML = `${hero.maxHP} / ${hero.currentHP} HP`;
           warrior.remove();
           hero.alive = false;
           console.log(`${hero.alive}`);
-         
-          
+          updateAliveHeroes();
         }
-       
-      
       }
 
-       //har laget getRandomAttack(); under hver hero, da dragen skal angripe med en gang
+      function updateAliveHeroes() {
+        aliveHeroes = heroesArray.filter((hero) => hero.alive);
+        console.log(`Number of alive heroes: ${aliveHeroes.length}`);
+
+        if (aliveHeroes.length === 0 && dragonObject.currentHP > 0) {
+          alert("Spillet er tapt! har vunnet!");
+          console.log("Alle heltene er døde. Dragen har vunnet!");
+        }
+      }
+
+      //har laget getRandomAttack(); under hver hero, da dragen skal angripe med en gang
 
       //angrep dragen skal gjøre, math.random og true, false
       function getRandomDragonAttack() {
-  let aliveHeroes = heroesArray.filter((hero) => hero.alive);
+        updateAliveHeroes();
 
-  if (aliveHeroes.length > 0 && dragonObject.currentHP > 0) {
-    let randomHero = Math.floor(Math.random() * aliveHeroes.length);
-    createHeroCard(aliveHeroes[randomHero]);
-  } else if (aliveHeroes.length === 0 && dragonObject.currentHP > 0) {
-    alert(`Spillet er tapt! ${dragonObject.name} har vunnet!`);
-    console.log("Alle heltene er døde. Dragen har vunnet!");
-  }
-}
-
+        if (aliveHeroes.length > 0 && dragonObject.currentHP > 0) {
+          let randomHero = Math.floor(Math.random() * aliveHeroes.length);
+          createHeroCard(aliveHeroes[randomHero]);
+        } 
+        console.log(aliveHeroes.length);
+      }
     </script>
   </body>
 </html>
