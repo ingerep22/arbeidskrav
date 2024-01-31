@@ -123,6 +123,8 @@
       healer.addEventListener("click", healerImage);
 
       function healerImage() {
+
+        if (dragonObject.currentHP > 0) {
         const healerDamage = heroesArray[0].damage;
 
         //currentHP blir manipulert med skaden healer har
@@ -134,13 +136,14 @@
         dragonHealthTxt.innerHTML = `${dragonObject.maxHP} / ${dragonObject.currentHP} HP`;
         getRandomDragonAttack();
       }
-
+    }
       //archer
       let archer = document.querySelector(".archer");
 
       archer.addEventListener("click", archerImage);
 
       function archerImage() {
+        if (dragonObject.currentHP > 0) {
         const archerDamage = heroesArray[1].damage;
 
         dragonObject.currentHP -= archerDamage;
@@ -151,13 +154,14 @@
         dragonHealthTxt.innerHTML = `${dragonObject.maxHP} / ${dragonObject.currentHP} HP`;
         getRandomDragonAttack();
       }
-
+    }
       //warrior
       let warrior = document.querySelector(".warrior");
 
       warrior.addEventListener("click", warriorImage);
 
       function warriorImage() {
+        if (dragonObject.currentHP > 0) {
         const warriorDamage = heroesArray[2].damage;
 
         dragonObject.currentHP -= warriorDamage;
@@ -168,14 +172,14 @@
         dragonHealthTxt.innerHTML = `${dragonObject.maxHP} / ${dragonObject.currentHP} HP`;
         getRandomDragonAttack();
       }
-
+    }
       function createHeroCard(hero) {
         console.log(hero);
         const dragonDamage = dragonObject.damage;
         hero.currentHP -= dragonDamage;
         console.log(hero.currentHP);
         alert(`${dragonObject.name} har angrepet ${hero.name}`);
-
+        
         if (
           hero.name == "Henriette Healer" &&
           hero.currentHP > 0 &&
@@ -231,8 +235,15 @@
         if (aliveHeroes.length === 0 && dragonObject.currentHP > 0) {
           alert(`Spillet er tapt! ${dragonObject.name} har vunnet!`);
           console.log("Alle heltene er døde. Dragen har vunnet!");
+          
+        } else if (dragonObject.currentHP <= 0 && aliveHeroes.length > 0) {
+          let dragonContainer = document.querySelector(".dragon-container");
+          dragonContainer.remove();
+          alert("Gratulerer, du har vunnet spillet!")
+          console.log("Dere har vunnet!")
         }
         console.log(aliveHeroes.length);
+        
       }
 
       //har laget getRandomAttack(); under hver hero, da dragen skal angripe med en gang
