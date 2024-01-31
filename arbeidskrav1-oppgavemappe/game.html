@@ -113,18 +113,29 @@
       let warriorHealthTxt = document.getElementById("warrior-health-txt");
       let dragonHealthTxt = document.querySelector(".dragon-health-txt");
 
+      //henter navn 
+      
+      let healerNameTxt = document.getElementById("healer-name-txt");
+      let archerNameTxt = document.getElementById("archer-name-txt");
+      let warriorNameTxt = document.getElementById("warrior-name-txt");
+      let dragonNameTxt = document.getElementById("dragon-name-txt");
       //Heroes angrep på dragon, lager function til hver helt
-
+      healerNameTxt.innerHTML = heroesArray[0].name;
+      archerNameTxt.innerHTML = heroesArray[1].name;
+      warriorNameTxt.innerHTML = heroesArray[2].name;
+      dragonNameTxt.innerHTML = dragonObject.name;
+     
       //healer
       //starter med å hente bilde
+      
       let healer = document.querySelector(".healer");
 
       //legger til en eventlistener og lager et parameter for å sende videre til function healerimage
       healer.addEventListener("click", healerImage);
 
       function healerImage() {
-
-        if (dragonObject.currentHP > 0) {
+      
+       if (dragonObject.currentHP > 0) {
         const healerDamage = heroesArray[0].damage;
 
         //currentHP blir manipulert med skaden healer har
